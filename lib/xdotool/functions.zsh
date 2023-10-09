@@ -5,7 +5,7 @@ function .zeac-is-terminal-active() {
         local lastCommandWindowId
 
         activeWindowId="$(xdotool getwindowfocus)"
-        zstyle -s zstyle ':execute-after-command:internal:runtime:*' 'last-command-window-id' 'lastCommandWindowId'
+        zstyle -s ':execute-after-command:internal:runtime:*' 'last-command-window-id' 'lastCommandWindowId'
 
         if [[ "${activeWindowId}" == "${lastCommandWindowId}" ]]; then
             return 0
