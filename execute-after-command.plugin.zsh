@@ -1,5 +1,5 @@
 # Standardized $0 handling
-# See https://wiki.zshell.dev/community/zsh_plugin_standard#zero-handling
+# https://wiki.zshell.dev/community/zsh_plugin_standard#zero-handling
 0="${ZERO:-${${0:#$ZSH_ARGZERO}:-${(%):-%N}}}"
 0="${${(M)0:#/*}:-$PWD/$0}"
 
@@ -10,6 +10,9 @@ function () {
     # https://wiki.zshell.dev/community/zsh_plugin_standard#standard-recommended-options
     builtin emulate -L zsh ${=${options[xtrace]:#off}:+-o xtrace}
     builtin setopt extended_glob warn_create_global typeset_silent no_short_loops rc_quotes no_auto_pushd
+
+    # Load ZSH modules
+    zmodload zsh/datetime
 
     # User customizable settings
     zstyle ':execute-after-command:user-setting:*' 'error-log'                              '/dev/stderr'
@@ -112,15 +115,13 @@ function () {
                     ${lastCommandExecutionSeconds} \
                     ${windowFocused}
             done
-        } 2>&1 | sed "s|^|zsh-execute-after-command: |" >> "${errorLog}"
+        } 2>&1 | sed 's|^|zsh-execute-after-command: |' >> "${errorLog}"
 
         zstyle -d ':execute-after-command:internal:runtime:*'   'last-command-start-time'
         zstyle -d ':execute-after-command:internal:runtime:*'   'last-command-as-typed'
         zstyle -d ':execute-after-command:internal:runtime:*'   'last-command-as-executed-limited'
         zstyle -d ':execute-after-command:internal:runtime:*'   'last-command-as-executed-full'
     }
-
-    zmodload zsh/datetime
 
     autoload -U add-zsh-hook
     add-zsh-hook preexec zsh-execute-after-command-preexec-hook

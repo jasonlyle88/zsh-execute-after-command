@@ -8,7 +8,7 @@ This is a ZSH plugin that is used to call functions after a command on the CLI f
 3. Command as it is executed by ZSH (full form)
 4. The exit code of the command
 5. The execution time (in seconds) of the command
-6. If the window/tab/pane of the terminal where command was executed has focus when the command finishes
+6. If the window/tab/pane of the terminal or TMUX instance where the command was executed has focus when the command finishes
     - `0`: Had focus
     - `1`: Did not have focus
     - `2`: Not checking for focus
@@ -20,7 +20,7 @@ NOTE: The first three parameters are the same values that are provided by the ZS
 
 This plugin runs after every command. If no callback functions are registered, then it just quickly exits, otherwise it will call those callback functions.
 
-This plugin provides a function called `zsh-execute-after-command-add-functions`. You can call this function in order to register callback functions with the plugin.
+This plugin provides a function called `zsh-execute-after-command-add-functions`. This funcation can be called in order to register callback functions with the plugin.
 
 <details>
 <summary>This can best be explained with an example:</summary>
@@ -52,7 +52,7 @@ $> function jml3() {
     printf -- '\n'
 }
 
-$> # Execute seperately to show you can add fucntions one at a time or multiple at once
+$> # Execute seperately to show fucntions can be added one at a time or multiple at once
 zsh-execute-after-command-add-functions jml1
 zsh-execute-after-command-add-functions jml2 jml3
 
@@ -114,17 +114,17 @@ zsh-execute-after-command:
 
 ### MacOS
 
-In order for focus detection to work properly, you must be using either the Apple Terminal or iTerm2.
+Apple Terminal or iTerm2 must be used in order for focus detection to work properly.
 
-Note: This is because in order to determine focus, we need the terminal to be scriptable via AppleScript.
+Note: This is because in order to determine focus the terminal needs to be scriptable via AppleScript.
 
 ### Linux
 
-In order for focus detection to work properly, you must have `xdotool` and `wmctrl` installed.
+The tools `xdotool` and `wmctrl` must be installed in order for focus detection to work properly.
 
 ## Installation
 
-To install this plugin, you simply need to download this project and `source` the `execute-after-command.plugin.zsh` file.
+To install this plugin, simply download this project and `source` the `execute-after-command.plugin.zsh` file.
 
 This should also compatible with ZSH frameworks/package managers
 
@@ -148,7 +148,7 @@ zstyle ':execute-after-command:user-setting:*' 'suppress-unable-check-active-win
 # The list of function callbacks for this to call. Should be managed by 'zsh-execute-after-command-add-functions' function.
 # Defaults to an empty list
 zstyle ':execute-after-command:user-setting:*' 'function-list'
-``````
+```
 
 ## Inspiration
 

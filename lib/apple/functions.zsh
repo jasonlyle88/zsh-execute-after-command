@@ -17,9 +17,9 @@ function .zeac-is-terminal-active() {
     function .zeac-is-terminal-window-active() {
         local terminal
 
-        if [[ "$TERM_PROGRAM" == 'iTerm.app' ]] || [[ -n "$ITERM_SESSION_ID" ]]; then
+        if [[ "${TERM_PROGRAM}" == 'iTerm.app' ]] || [[ -n "${ITERM_SESSION_ID}" ]]; then
             terminal="iterm2"
-        elif [[ "$TERM_PROGRAM" == 'Apple_Terminal' ]] || [[ -n "$TERM_SESSION_ID" ]]; then
+        elif [[ "${TERM_PROGRAM}" == 'Apple_Terminal' ]] || [[ -n "${TERM_SESSION_ID}" ]]; then
             terminal="apple-terminal"
         else
             .zeac-handle-unsupported-terminal
