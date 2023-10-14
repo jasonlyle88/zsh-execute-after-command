@@ -1,6 +1,6 @@
 # Exit with 0 if inside a TMUX pane
 function .zeac-is-inside-tmux() {
-    [[ "$TMUX" != "" ]]
+    [[ "${TMUX}" != "" ]]
 }
 
 # Find the TTY for the current shell, also accounting for TMUX.
@@ -8,7 +8,7 @@ function .zeac-current-tty() {
     if .zeac-is-inside-tmux; then
         tmux display-message -p '#{client_tty}'
     else
-        echo $TTY
+        printf -- '%s' "${TTY}"
     fi
 }
 
@@ -16,7 +16,9 @@ function .zeac-current-tty() {
 function .zeac-is-current-tmux-pane-active() {
     .zeac-is-inside-tmux || return 1
 
-    local active_pane_id=$(tmux list-windows -F '#{window_active} #{pane_id}' | grep -i '^1' | awk '{ print $2 }')
+    local active_pane_id
+
+    active_pane_id=$(tmux list-windows -F '#{window_active} #{pane_id}' | grep -i '^1' | awk '{ print $2 }')
 
     if [[ "$TMUX_PANE" == "$active_pane_id" ]]; then
         return 0
