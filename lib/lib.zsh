@@ -30,7 +30,7 @@ function .zeac-handle-unsupported-terminal() {
 
     zstyle -b ':execute-after-command:user-setting:*' 'suppress-unable-check-active-window' 'suppressUnableCheckActiveWindow'
 
-    if [[ "${suppressUnableCheckActiveWindow}" = no ]]; then
+    if [[ "${suppressUnableCheckActiveWindow}" = "no" ]]; then
         printf -- 'ERROR: Unsupported terminal for checking for an active '
         printf -- 'window. To avoid this error, either set '
         printf -- '"check-active-window" to "no" or set '
