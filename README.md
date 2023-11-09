@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This is a ZSH plugin that is used to call functions after a command on the CLI finishes along with some context. When a function is called by this plugin, it recieves the following parameters:
+This is a ZSH plugin that is used to call shell functions after a command on the CLI finishes. The shell function called after a CLI command finishes recieves several parameters that provide context about the commands context. Those parameters are as follows:
 1. Command as it was typed on the commmand line
 2. Command as it is executed by ZSH (A condensed form, limited in size)
 3. Command as it is executed by ZSH (full form)
