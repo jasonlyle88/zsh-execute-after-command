@@ -16,7 +16,7 @@ This is a ZSH plugin that is used to call shell functions after a command on the
 NOTE: The first three parameters are the same values that are provided by the ZSH [preexec hook](https://zsh.sourceforge.io/Doc/Release/Functions.html).
 
 ### How to use
-This plugin runs after every command. If no callback functions are registered, then it just quickly exits, otherwise it will call those callback functions.
+Once the plugin is installed, it automatically runs after every command. If no callback functions are registered, then it just quickly exits, otherwise it will call those callback functions.
 
 This plugin provides a function called `zsh-execute-after-command-add-functions`. This funcation can be called in order to register callback functions with the plugin.
 
