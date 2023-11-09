@@ -16,7 +16,7 @@ function () {
 
     # User customizable settings
     zstyle ':execute-after-command:user-setting:*' 'error-log'                              '/dev/stderr'
-    zstyle ':execute-after-command:user-setting:*' 'check-active-window'                    'yes'
+    zstyle ':execute-after-command:user-setting:*' 'check-active-window'                    'no'
     zstyle ':execute-after-command:user-setting:*' 'suppress-unable-check-active-window'    'no'
     # zstyle ':execute-after-command:user-setting:*' 'function-list'
 

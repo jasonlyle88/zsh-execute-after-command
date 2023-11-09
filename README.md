@@ -138,8 +138,8 @@ This plugin uses ZSH's built in zstyle for storing settings. Below is a list of 
 zstyle ':execute-after-command:user-setting:*' 'error-log'                              '/dev/stderr'
 
 # Whether or not to check if the window is active when the command finishes
-# Defaults to yes
-zstyle ':execute-after-command:user-setting:*' 'check-active-window'                    'yes'
+# Defaults to no
+zstyle ':execute-after-command:user-setting:*' 'check-active-window'                    'no'
 
 # Whether or not to suppress the error mesage about being unable to check if the window is active when the command finishes. This error will not occur if check-active-window is 'no'
 # Defaults to no
