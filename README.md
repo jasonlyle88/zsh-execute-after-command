@@ -122,8 +122,8 @@ The tools `xdotool` and `wmctrl` must be installed in order for focus detection 
 ### Manual installation
 ```shell
 git clone 'https://github.com/jasonlyle88/zsh-execute-after-command' "${XDG_CONFIG_HOME:-${HOME}}/zsh-execute-after-command"
-echo 'source "${XDG_CONFIG_HOME:-${HOME}}/zsh-execute-after-command/execute-after-command.plugin.zsh"' >> "${HOME}/.zshrc"
-source "${XDG_CONFIG_HOME:-${HOME}}/zsh-execute-after-command/execute-after-command.plugin.zsh"
+echo 'source "${XDG_CONFIG_HOME:-${HOME}}/zsh-execute-after-command/zsh-execute-after-command.plugin.zsh"' >> "${HOME}/.zshrc"
+source "${XDG_CONFIG_HOME:-${HOME}}/zsh-execute-after-command/zsh-execute-after-command.plugin.zsh"
 ```
 
 ### Installation with package managers
