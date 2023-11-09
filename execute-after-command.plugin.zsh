@@ -15,12 +15,14 @@ function () {
     zmodload zsh/datetime
 
     # User customizable settings
+    # Commented out ZSTYLE commands are to document settings that are used but not initialized here
     zstyle ':execute-after-command:user-setting:*' 'error-log'                              '/dev/stderr'
     zstyle ':execute-after-command:user-setting:*' 'check-active-window'                    'no'
     zstyle ':execute-after-command:user-setting:*' 'suppress-unable-check-active-window'    'no'
     # zstyle ':execute-after-command:user-setting:*' 'function-list'
 
     # Internal settings
+    # Commented out ZSTYLE commands are to document settings that are used but not initialized here
     zstyle ':execute-after-command:internal:setting:*'  'plugin-directory'  "${zshExecuteAfterCommandPluginDirectory}"
     # zstyle ':execute-after-command:internal:runtime:*'  'last-command-start-time'
     # zstyle ':execute-after-command:internal:runtime:*'  'last-command-as-typed'
