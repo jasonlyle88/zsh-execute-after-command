@@ -1,7 +1,6 @@
 # ZSH Execute After Command
 
 ## Purpose
-
 This is a ZSH plugin that is used to call shell functions after a command on the CLI finishes. The shell function called after a CLI command finishes recieves several parameters that provide context about the commands context. Those parameters are as follows:
 1. Command as it was typed on the commmand line
 2. Command as it is executed by ZSH (A condensed form, limited in size)
@@ -17,7 +16,6 @@ This is a ZSH plugin that is used to call shell functions after a command on the
 NOTE: The first three parameters are the same values that are provided by the ZSH [preexec hook](https://zsh.sourceforge.io/Doc/Release/Functions.html).
 
 ### How to use
-
 This plugin runs after every command. If no callback functions are registered, then it just quickly exits, otherwise it will call those callback functions.
 
 This plugin provides a function called `zsh-execute-after-command-add-functions`. This funcation can be called in order to register callback functions with the plugin.
@@ -26,8 +24,6 @@ This plugin provides a function called `zsh-execute-after-command-add-functions`
 <summary>This can best be explained with an example:</summary>
 
 ```shell
-$> source "execute-after-command.plugin.zsh"
-
 $> function jml1() {
     local param
     for param in "$@"; do
@@ -111,25 +107,40 @@ zsh-execute-after-command:
 </details>
 
 ## Requirements
+This only runs with ZSH shell environments.
 
 ### MacOS
-
 Apple Terminal or iTerm2 must be used in order for focus detection to work properly.
 
 Note: This is because in order to determine focus the terminal needs to be scriptable via AppleScript.
 
 ### Linux
-
 The tools `xdotool` and `wmctrl` must be installed in order for focus detection to work properly.
 
 ## Installation
 
-To install this plugin, simply download this project and `source` the `execute-after-command.plugin.zsh` file.
+### Manual installation
+```shell
+git clone 'https://github.com/jasonlyle88/zsh-execute-after-command' "${XDG_CONFIG_HOME:-${HOME}}/zsh-execute-after-command"
+echo 'source "${XDG_CONFIG_HOME:-${HOME}}/zsh-execute-after-command/execute-after-command.plugin.zsh"' >> "${HOME}/.zshrc"
+source "${XDG_CONFIG_HOME:-${HOME}}/zsh-execute-after-command/execute-after-command.plugin.zsh"
+```
 
-This should also compatible with ZSH frameworks/package managers
+### Installation with package managers
+
+#### [Antidote](https://getantidote.github.io/)
+Add `jasonlyle88/zsh-execute-after-command` to your plugins file (default is `~/.zsh_plugins.txt`)
+
+#### [Oh-My-Zsh](https://ohmyz.sh/)
+```shell
+git clone 'https://github.com/jasonlyle88/zsh-execute-after-command' "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-execute-after-command"
+omz plugin enable zsh-execute-after-command
+```
+
+#### Others
+This should be compatible with other ZSH frameworks/package managers, but I have not tested them. If you have tested this plugin with another package manager, feel free to create a merge request and add the instructions here!
 
 ## Configuration
-
 This plugin uses ZSH's built in zstyle for storing settings. Below is a list of the settings and their initial values:
 
 ```shell
@@ -151,5 +162,4 @@ zstyle ':execute-after-command:user-setting:*' 'function-list'
 ```
 
 ## Inspiration
-
 I found [Federico Marzocchi's ZSH Notify](https://github.com/marzocchi/zsh-notify) ZSH plugin and was using it for a little bit. I wanted to do things a little different, and so this project was created. Thanks to Federico Marzocchi for his work on ZSH Notify!
