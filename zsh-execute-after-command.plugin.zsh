@@ -33,14 +33,29 @@ function () {
     source "${zshExecuteAfterCommandPluginDirectory}/lib/main.zsh"
 
     function zsh-execute-after-command-add-functions() {
+        local -a functionsRequestedToAdd=( "$@" )
+
+        local -a functionsToAdd=()
         local -a currentFunctions
+        local functionToAdd
 
         zstyle -a ':execute-after-command:user-setting:*' 'function-list' 'currentFunctions'
 
         if [[ "${#currentFunctions[@]}" -eq 0 ]]; then
-            zstyle ':execute-after-command:user-setting:*' 'function-list' "$@"
+            zstyle ':execute-after-command:user-setting:*' 'function-list' "${functionsRequestedToAdd[@]}"
         else
-            zstyle ':execute-after-command:user-setting:*' 'function-list' "${currentFunctions[@]}" "$@"
+            for functionToAdd in "${functionsRequestedToAdd[@]}"; do
+                # Check if function already in list of current functions
+                if ((${currentFunctions[(Ie)${functionToAdd}]})); then
+                    continue
+                else
+                    functionsToAdd+=( "${functionToAdd}" )
+                fi
+            done
+
+            if [[ ${#functionsToAdd[@]} -gt 0 ]]; then
+                zstyle ':execute-after-command:user-setting:*' 'function-list' "${currentFunctions[@]}" "${functionsToAdd[@]}"
+            fi
         fi
     }
 
